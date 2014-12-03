@@ -28,9 +28,9 @@ class vertx{
       //vertx(double u_val, double Dd_val, double beta);
       vertx(double u_val, double Dd_val, double beta, double freq[], int len);
       dcomplex G1p(double w, int i, int j);
-      M2cd G1p(double w);
-      M2cd invG0_ATLI(double w);
-      M2cd Sig_ATLI(double w);
+      MatQN G1p(double w);
+      MatQN invG0_ATLI(double w);
+      MatQN Sig_ATLI(double w);
       dcomplex G2pc(double w1, double w2, double w2p, int m, int n, int o, int p, dcomplex PVal[3][3][3][4][4][4][4]); //PVal contains Phi Values for speedup
       dcomplex G2pc_w2w3(double w1, double w2, double w2p, int m, int n, int o, int p);
       dcomplex vrtx(double w1, double w2, double w2p, int m, int n, int o, int p);

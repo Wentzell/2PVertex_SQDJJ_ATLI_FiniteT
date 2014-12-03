@@ -88,22 +88,22 @@ dcomplex vertx::G1p(double w, int m, int n)
     return val;
 }
 
-M2cd vertx::G1p(double w)
+MatQN vertx::G1p(double w)
 {
-    M2cd Gm;
+    MatQN Gm;
     Gm <<    G1p(w,0,0),   G1p(w,0,1),
             G1p(w,1,0),   G1p(w,1,1);
     return Gm;
 }
 
-M2cd vertx::invG0_ATLI(double w){
-    M2cd invG;
+MatQN vertx::invG0_ATLI(double w){
+    MatQN invG;
     invG <<		I*w,	Dd,
                 Dd,			I*w;
     return invG;
 }
 
-M2cd vertx::Sig_ATLI(double w){
+MatQN vertx::Sig_ATLI(double w){
     return invG0_ATLI(w) - G1p(w).inverse();
 }
 
@@ -180,10 +180,10 @@ dcomplex vertx::G2pc_w2w3(double w1, double w2, double w2p, int m, int n, int o,
 
 dcomplex vertx::vrtx(double w1, double w2, double w2p, int m, int n, int o, int p)
 {
-    M2cd G1Inv = G1p(w1).inverse();
-    M2cd G2Inv = G1p(w2).inverse();
-    M2cd G3Inv = G1p(w1+w2-w2p).inverse();
-    M2cd G4Inv = G1p(w2p).inverse();
+    MatQN G1Inv = G1p(w1).inverse();
+    MatQN G2Inv = G1p(w2).inverse();
+    MatQN G3Inv = G1p(w1+w2-w2p).inverse();
+    MatQN G4Inv = G1p(w2p).inverse();
 
 //    if( std::isnan( (G1Inv*G2Inv*G3Inv*G4Inv).norm() ) == 1 ){ cout << " G1Inv NAN " << G1p(w1) << " rho " << rho << endl; getchar();}
 
@@ -224,10 +224,10 @@ dcomplex vertx::vrtx(double w1, double w2, double w2p, int m, int n, int o, int 
 
 dcomplex vertx::vrtx_w2w3(double w1, double w2, double w2p, int m, int n, int o, int p)
 {
-    M2cd G1Inv = G1p(w1).inverse();
-    M2cd G2Inv = G1p(w2).inverse();
-    M2cd G3Inv = G1p(w1+w2-w2p).inverse();
-    M2cd G4Inv = G1p(w2p).inverse();
+    MatQN G1Inv = G1p(w1).inverse();
+    MatQN G2Inv = G1p(w2).inverse();
+    MatQN G3Inv = G1p(w1+w2-w2p).inverse();
+    MatQN G4Inv = G1p(w2p).inverse();
 
     dcomplex val = 0.0;
     for(int i = 0; i < 2; i++){
